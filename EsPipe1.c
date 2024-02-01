@@ -3,7 +3,7 @@
 #include<string.h>
 #include<unistd.h>
 #include<sys/wait.h>
-
+#define DIM_ARRAY 5
 int main()
 {
 
@@ -24,7 +24,7 @@ int main()
     }
     if(p>0)
     {
-        int numeri2[5];
+        int numeri2[DIM_ARRAY];
         printf("Io sono il padre, il mio PID:%d, il PID di mio figlio è:%d\n", getpid(),p);  
         wait(1);
         printf("Inserisci il numero da moltiplicare\n");
@@ -39,7 +39,7 @@ int main()
     }
     else
     {
-        int numeri[5];
+        int numeri[DIM_ARRAY];
         printf("Io sono il figlio il mio PID:%d, il PID di mio padre è:%d\n",p, getppid());
         printf("Inserire numeri:\n");
         for(int i=0;i<5; i++)
