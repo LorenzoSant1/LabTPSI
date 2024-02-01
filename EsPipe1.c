@@ -11,6 +11,7 @@ int main()
     int fattore;
     int n;
     int p;
+    int status;
     if(pipe(fd)==-1)
     {
         printf("Errore nella creazione della pipe\n");
@@ -26,16 +27,19 @@ int main()
     {
         int numeri2[DIM_ARRAY];
         printf("Io sono il padre, il mio PID:%d, il PID di mio figlio è:%d\n", getpid(),p);  
-        wait(1);
-        printf("Inserisci il numero da moltiplicare\n");
-        scanf("%d", &fattore);
+        
+       
         close(fd[1]);
         read(fd[0],numeri2,sizeof(numeri2));
+        printf("Inserisci il numero da moltiplicare\n");
+        scanf("%d", &fattore);
         for(int i=0;i<5;i++)
         {
             printf("Numero %d: %d\n",i+1,numeri2[i]*fattore);
         }
         close(fd[0]);
+        wait(&status);
+
     }
     else
     {
@@ -52,7 +56,6 @@ int main()
             write(fd[1],numeri, sizeof(numeri));                    
         close(fd[1]);
 
-    
+    }
     return 1;
-}
 }
