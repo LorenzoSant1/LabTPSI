@@ -31,7 +31,7 @@ int main()
        
         close(fd[1]);
         read(fd[0],numeri2,sizeof(numeri2));
-                close(fd[0]);
+        close(fd[0]);
         printf("Inserisci il numero da moltiplicare\n");
         scanf("%d", &fattore);
         for(int i=0;i<5;i++)
